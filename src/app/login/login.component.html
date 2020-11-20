@@ -6,16 +6,18 @@
 
 <p>{{user|json}}</p>
 
-<form noValidate (ngSubmit)="onSubmit()" >
+<form noValidate (ngSubmit)="onSubmit()" #loginForm="ngForm" >
   <mat-dialog-content>
     <p>
       <mat-form-field>
-        <input matInput type="text" placeholder="Username" name="Username" [(ngModel)]="user.username">
+        <input matInput type="text" placeholder="Username" name="Username" [(ngModel)]="user.username" #username="ngModel" required>
+        <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
       </mat-form-field>
     </p>
     <p>
       <mat-form-field>
-        <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="user.password">
+        <input matInput type="password" placeholder="Password" name="password" [(ngModel)]="user.password" #password="ngModel" required>
+        <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
       </mat-form-field>
     </p>
     <p>
@@ -25,6 +27,6 @@
   <mat-dialog-actions>
     <span class="flex-spacer"></span>
     <button mat-button mat-dialog-close>Cancel</button>
-    <button type="submit" mat-button class="background-primary text-floral-white" >Login</button>
+    <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="loginForm.form.invalid" >Login</button>
   </mat-dialog-actions>
 </form>
