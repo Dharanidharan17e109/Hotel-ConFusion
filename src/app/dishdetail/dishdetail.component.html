@@ -28,6 +28,7 @@
       </div>
   </div>
 
+
   <div fxFlex="40">
     <div fxFlex *ngIf="dish">
         <h1>Comments</h1>
@@ -41,6 +42,9 @@
         </mat-list>
 
     </div>
+  </div>
+  <div [hidden]="dish">
+    <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
 
 </div>

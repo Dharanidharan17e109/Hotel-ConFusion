@@ -11,15 +11,21 @@ export class PromotionService {
   constructor() { }
 
   getPromotions():Promise<Promotion[]>{
-    return Promise.resolve(PROMOTIONS);
+    return new Promise((resolve)=>{
+      setTimeout(()=>{resolve(PROMOTIONS);},2000);
+    });
   }
 
   getPromotion(id):Promise<Promotion>{
-    return Promise.resolve(PROMOTIONS.filter((promo)=>(promo.id===id))[0]);
+    return new Promise((resolve)=>{
+      setTimeout(()=>{resolve(PROMOTIONS.filter((promo)=>(promo.id===id))[0]);},2000);
+    });
   }
 
   getfeaturedPromotion():Promise<Promotion>{
-    return Promise.resolve(PROMOTIONS.filter((promo)=>promo.featured)[0]);
+    return new Promise((resolve)=>{
+      setTimeout(()=>{resolve(PROMOTIONS.filter((promo)=>promo.featured)[0]);},2000);
+    });
   }
 
 
