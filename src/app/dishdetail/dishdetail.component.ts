@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit,Inject } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { Params,ActivatedRoute } from '@angular/router';
@@ -48,7 +48,8 @@ export class DishdetailComponent implements OnInit {
     };
     @ViewChild('fform') commentFormDirective;
     
-  constructor(private dishService:DishService,private route:ActivatedRoute,private location:Location,private fb:FormBuilder) { 
+  constructor(private dishService:DishService,private route:ActivatedRoute,private location:Location,private fb:FormBuilder,
+    @Inject('baseURL') private baseURL) { 
     this.createForm();
   }
 
@@ -65,7 +66,7 @@ export class DishdetailComponent implements OnInit {
   }
   
 
-  ngOnInit() {
+  ngOnInit():void {
     this.dishService.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
     this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(params['id'])))
     .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); });
@@ -88,9 +89,9 @@ export class DishdetailComponent implements OnInit {
     console.log(this.comment);
     
     this.commentForm.reset({
-      author: '',
+      author: ' ',
       rating:'5',
-      comment:''
+      comment:' '
     });
     this.commentFormDirective.resetForm();
   }
