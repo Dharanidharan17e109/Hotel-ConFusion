@@ -12,15 +12,15 @@ import { sanitizeIdentifier } from '@angular/compiler';
 export class MenuComponent implements OnInit {
 
   dishes: Dish[];
+  errMsg:String;
 
 
   constructor(private dishService:DishService,
     @Inject('baseURL') private baseURL) { }
 
   ngOnInit(): void {
-    this.dishService.getDishes().subscribe((dishes)=>{
-      this.dishes=dishes;
-    })
+    this.dishService.getDishes().subscribe((dishes)=>{this.dishes=dishes;},
+    errMsg=> this.errMsg = <any>errMsg);
   }
 
   

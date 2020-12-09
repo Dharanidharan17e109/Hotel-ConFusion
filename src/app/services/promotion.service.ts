@@ -22,7 +22,8 @@ export class PromotionService {
   }
 
   getfeaturedPromotion():Observable<Promotion>{
-      return this.http.get<Promotion[]>(baseURL+'promotions?featured=true').pipe(map(promotions => promotions[0]));
+    return this.http.get<Promotion>(baseURL+'promotions?featured=true')
+    .pipe(map( promotions=>promotions[0]));
   }
 
 

@@ -79,8 +79,11 @@
 
     </div>
    
-  <div [hidden]="dish">
+  <div [hidden]="dish || errMess">
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+  <div *ngIf="errMess">
+    <h1>{{errMess}}</h1>
   </div>
   
 </div>
