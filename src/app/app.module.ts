@@ -42,6 +42,7 @@ import { baseURL } from './shared/baseurl';
 
 
 import "hammerjs";
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 
@@ -55,7 +56,8 @@ import "hammerjs";
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
